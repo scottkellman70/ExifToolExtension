@@ -21,7 +21,7 @@ namespace ExifToolExtension
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = @"C:\Windows\exiftool.exe",
-                    Arguments = string.Format(@"-location:all {0}", textBoxFile.Text),
+                    Arguments = string.Format(@"-a  ""-gps*"" -ee {0}", textBoxFile.Text),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true
@@ -96,7 +96,7 @@ namespace ExifToolExtension
             DirectoryInfo di = new DirectoryInfo(textBoxFolder.Text);
             listBoxTopResults.Items.Clear();
 
-            foreach (FileInfo fi in di.GetFiles("*.*",SearchOption.AllDirectories))
+            foreach (FileInfo fi in di.GetFiles("*.*", SearchOption.AllDirectories))
             {
                 try
                 {
@@ -134,6 +134,28 @@ namespace ExifToolExtension
             if (result == DialogResult.OK)
             {
                 textBoxFolder.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void ButtonByTag_Click(object sender, EventArgs e)
+        {
+            listBoxTopResults.Items.Clear();
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = @"C:\Windows\exiftool.exe",
+                    Arguments = string.Format(@"-a ""-{0}"" -ee {1}", textBoxTag.Text, textBoxFile.Text),
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                listBoxTopResults.Items.Add(proc.StandardOutput.ReadLine().Replace("  ", ""));
             }
         }
     }

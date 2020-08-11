@@ -41,6 +41,8 @@
             this.buttonSelectFolder = new System.Windows.Forms.Button();
             this.listBoxBottomResults = new System.Windows.Forms.ListBox();
             this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBoxTag = new System.Windows.Forms.TextBox();
+            this.ButtonByTag = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSelectFile
@@ -53,7 +55,7 @@
             this.buttonSelectFile.UseVisualStyleBackColor = true;
             this.buttonSelectFile.Click += new System.EventHandler(this.ButtonSelectFile_Click);
             // 
-            // openFileDialog1
+            // ofd
             // 
             this.ofd.FileName = "openFileDialog1";
             // 
@@ -144,11 +146,30 @@
             this.listBoxBottomResults.Size = new System.Drawing.Size(440, 199);
             this.listBoxBottomResults.TabIndex = 10;
             // 
+            // textBoxTag
+            // 
+            this.textBoxTag.Location = new System.Drawing.Point(557, 22);
+            this.textBoxTag.Name = "textBoxTag";
+            this.textBoxTag.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTag.TabIndex = 11;
+            // 
+            // ButtonByTag
+            // 
+            this.ButtonByTag.Location = new System.Drawing.Point(557, 48);
+            this.ButtonByTag.Name = "ButtonByTag";
+            this.ButtonByTag.Size = new System.Drawing.Size(75, 23);
+            this.ButtonByTag.TabIndex = 12;
+            this.ButtonByTag.Text = "By Tag";
+            this.ButtonByTag.UseVisualStyleBackColor = true;
+            this.ButtonByTag.Click += new System.EventHandler(this.ButtonByTag_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 633);
+            this.Controls.Add(this.ButtonByTag);
+            this.Controls.Add(this.textBoxTag);
             this.Controls.Add(this.listBoxBottomResults);
             this.Controls.Add(this.textBoxFolder);
             this.Controls.Add(this.buttonSelectFolder);
@@ -182,6 +203,8 @@
         private System.Windows.Forms.Button buttonSelectFolder;
         private System.Windows.Forms.ListBox listBoxBottomResults;
         private System.Windows.Forms.FolderBrowserDialog fbd;
+        private System.Windows.Forms.TextBox textBoxTag;
+        private System.Windows.Forms.Button ButtonByTag;
     }
 }
 
